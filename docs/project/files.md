@@ -1,16 +1,6 @@
 ## Which files?
 
-You can either use `files` to be explicit:
-
-```json
-{
-    "files":[
-        "./some/file.ts"
-    ]
-}
-```
-
-or `include` and `exclude` to specify files. E.g.:
+Use `include` and `exclude` to specify files / folders / globs. E.g.:
 
 
 ```json
@@ -25,7 +15,19 @@ or `include` and `exclude` to specify files. E.g.:
 }
 ```
 
-Some notes:
+### Globs
 
-* if `files` is specified, other options are ignored
-* `**/*` (e.g. sample usage `somefolder/**/*`) means all folder and any files (the extensions `.ts`/`.tsx` will be included and even `.js`/`.jsx` if `allowJs` is true)
+* For globs : `**/*` (e.g. sample usage `somefolder/**/*`) means all folder and any files (the extensions `.ts`/`.tsx` will be assumed and if `allowJs:true` so will `.js`/`.jsx`)
+
+### `files` option
+You can either use `files` to be explicit. 
+
+```json
+{
+    "files":[
+        "./some/file.ts"
+    ]
+}
+```
+
+But it is not recommended as you have to keep updating it. Instead use `include` to just add the containing folder. 

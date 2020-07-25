@@ -14,7 +14,7 @@ Here is a *simplied* version of the actual code in the parser that you can run d
 ```ts
 import * as ts from "ntypescript";
 
-// TypeScript has a singelton scanner
+// TypeScript has a singleton scanner
 const scanner = ts.createScanner(ts.ScriptTarget.Latest, /*skipTrivia*/ true);
 
 // That is initialized using a function `initializeState` similar to
@@ -35,7 +35,7 @@ var foo = 123;
 // Start the scanning
 var token = scanner.scan();
 while (token != ts.SyntaxKind.EndOfFileToken) {
-    console.log(ts.syntaxKindToName(token));
+    console.log(ts.formatSyntaxKind(token));
     token = scanner.scan();
 }
 ```
@@ -63,7 +63,7 @@ var foo = 123;
 // Start the scanning
 var token = scanner.scan();
 while (token != ts.SyntaxKind.EndOfFileToken) {
-    let currentToken = ts.syntaxKindToName(token);
+    let currentToken = ts.formatSyntaxKind(token);
     let tokenStart = scanner.getStartPos();
     token = scanner.scan();
     let tokenEnd = scanner.getStartPos();
@@ -81,4 +81,4 @@ SemicolonToken 13 14
 ```
 
 ### Standalone scanner
-Even though the typescript parser has a singleton scanner you can create a standalone scanner using `createScanner` and use its `setText`/`setTextPos` to scan at different points in a file for your amusement.
+Even though the TypeScript parser has a singleton scanner you can create a standalone scanner using `createScanner` and use its `setText`/`setTextPos` to scan at different points in a file for your amusement.
